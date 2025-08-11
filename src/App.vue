@@ -1,5 +1,5 @@
 <script setup>
-    import SessionTimer from '@/components/SessionTimer.vue'
+import SessionTimer from '@/components/SessionTimer.vue'
 </script>
 
 <template>
@@ -10,7 +10,7 @@
 </template>
 
 <style scoped>
-    .container {
-        place-items: center;
-    }
+.container {
+    place-items: center;
+}
 </style>

@@ -64,10 +64,11 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-    .display {
-        font-size: 3em;
-    }
-    .control-button {
-        margin: 0.5em;
-    }
+.display {
+    font-size: 3em;
+}
+
+.control-button {
+    margin: 0.5em;
+}
 </style>
