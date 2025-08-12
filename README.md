@@ -27,3 +27,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Create a workout based on the example
+
+```sh
+cd src/assets
+cp workout.example.json workout.json
+```

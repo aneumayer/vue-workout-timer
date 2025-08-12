@@ -54,7 +54,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="container">
+    <div class="timer">
         <div class="display">{{ sessionTime }}</div>
         <div class="controls">
             <button class="control-button" @click="toggleTimer">{{ running ? 'Pause' : 'Start' }}</button>
@@ -64,10 +64,15 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.timer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
 .display {
     font-size: 3em;
 }
-
 .control-button {
     margin: 0.5em;
 }
