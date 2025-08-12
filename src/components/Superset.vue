@@ -21,12 +21,8 @@ function hide() {
 
 <template>
     <div class="superset">
-        <h3>Superset {{supersetCount}}</h3>
-        <div
-            :class="{ 'd-none': hidden }"
-            v-for="(exercise, idx) in props.items"
-            :key="idx"
-        >
+        <h3>Superset {{ supersetCount }}</h3>
+        <div :class="{ 'd-none': hidden }" v-for="(exercise, idx) in props.items" :key="idx">
             <Exercise :item="exercise" />
         </div>
         <button class="control-button" @click="hide">{{hidden ? 'Show' : 'Complete'}}</button>

@@ -1,28 +1,26 @@
 <script setup>
-import { ref } from 'vue';
-import WorkoutDisplay from '@/components/WorkoutDisplay.vue';
+import { ref, defineEmits } from 'vue';
 
+const emit = defineEmits(['selectedWorkout']);
 // Glob all JSON files in /src/assets/workouts
 const modules = import.meta.glob('@/assets/workouts/*.json', { eager: true });
-
 // Build a list of filenames and their paths
 const fileEntries = Object.entries(modules).map(([path, data]) => ({
     name: path.replace(/^.*\/([^.]+)\.json$/, '$1'), path, data
 }));
-
 const fileNames = fileEntries.map(entry => entry.name);
-
 const selected = ref(fileNames[0] || null);
-const data = ref(null);
 
+// Get the contents of the selected file and pass it up
 function loadFile(name) {
     const entry = fileEntries.find(e => e.name === name);
-    // If the imported data is an object with a default property, use that
+    let workout = null;
     if (entry && entry.data && entry.data.default) {
-        data.value = entry.data.default;
-    } else {
-        data.value = entry ? entry.data : null;
+        workout = entry.data.default;
+    } else if (entry) {
+        workout = entry.data;
     }
+    emit('selectedWorkout', workout);
 }
 
 if (selected.value) loadFile(selected.value);
@@ -36,7 +34,6 @@ if (selected.value) loadFile(selected.value);
             </option>
         </select>
     </div>
-    <WorkoutDisplay v-if="data" :workout="data" />
 </template>
 
 <style scoped>
@@ -48,12 +45,15 @@ if (selected.value) loadFile(selected.value);
     margin-bottom: 1rem;
     background-color: #2b2b00;
 }
+
 .picker-parts {
     display: inline-block;
 }
+
 label {
     padding-right: 1rem;
 }
+
 select {
     padding: 0.3rem 1rem;
     border-radius: 8px;
