@@ -31,6 +31,6 @@ npm run build
 ### Create a workout based on the example
 
 ```sh
-cd src/assets
-cp workout.example.json workout.json
+cd src/assets/workouts
+cp workout.example.json Leg_Day.json
 ```
