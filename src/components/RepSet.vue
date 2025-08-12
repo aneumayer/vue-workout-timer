@@ -24,4 +24,11 @@ defineProps({
 </template>
 
 <style scoped>
+.rep-block {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: #2b1800;
+}
 </style>

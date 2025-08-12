@@ -46,7 +46,7 @@ if (selected.value) loadFile(selected.value);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #2b1800;
+    background-color: #2b2b00;
 }
 .picker-parts {
     display: inline-block;

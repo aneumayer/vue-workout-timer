@@ -3,60 +3,51 @@
         {
             "name": "Ring Archer Row",
             "reps": 6,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "Reverse Nordic",
             "reps": 8,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "Decline RTO Pseudo Planche Pushup",
             "reps": 8,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         }
     ],
     [
         {
             "name": "Strap-Assisted One-Arm Chinup",
             "reps": 5,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "Ring One-Leg Deficit Hip Thrust",
             "reps": 5,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "RTO Dip",
             "reps": 6,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         }
     ],
     [
         {
             "name": "Horizontal Ring Face Pull",
             "reps": 8,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "Dragon Flag",
             "reps": 8,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         },
         {
             "name": "Decline Ring Fly",
             "reps": 8,
-            "sets": 3,
-            "rest": 0
+            "sets": 3
         }
     ]
 ]

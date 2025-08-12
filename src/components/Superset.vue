@@ -1,20 +1,35 @@
 <script setup>
-import Exercise from '@/components/Exercise.vue'
+import { ref, defineProps } from 'vue';
+import Exercise from '@/components/Exercise.vue';
 
 const props = defineProps({
     items: {
         type: Array,
         required: true
+    },
+    supersetCount: {
+        type: Number,
+        required: true
     }
 });
+
+const hidden = ref(false);
+function hide() {
+    hidden.value = !hidden.value;
+}
 </script>
 
 <template>
     <div class="superset">
-        <h3>Superset</h3>
-        <div v-for="(exercise, idx) in props.items" :key="idx">
+        <h3>Superset {{supersetCount}}</h3>
+        <div
+            :class="{ 'd-none': hidden }"
+            v-for="(exercise, idx) in props.items"
+            :key="idx"
+        >
             <Exercise :item="exercise" />
         </div>
+        <button class="control-button" @click="hide">{{hidden ? 'Show' : 'Complete'}}</button>
     </div>
 </template>
 
@@ -25,6 +40,6 @@ const props = defineProps({
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #2b0000;
+    background-color: #00002b;
 }
 </style>

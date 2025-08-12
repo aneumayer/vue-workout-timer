@@ -32,13 +32,6 @@ const stopTimer = () => {
     }
 };
 
-const resetTimer = () => {
-    elapsed.value = 0;
-    stopTimer();
-    running.value = false;
-    sessionTime.value = '00:00';
-};
-
 const toggleTimer = () => {
     running.value = !running.value;
     if (running.value) {
@@ -58,7 +51,6 @@ onUnmounted(() => {
         <div class="display d-flex justify-content-center">{{ sessionTime }}</div>
         <div class="controls d-flex justify-content-center">
             <button class="control-button" @click="toggleTimer">{{ running ? 'Stop' : 'Start' }}</button>
-            <button class="control-button" @click="resetTimer">Reset</button>
         </div>
     </div>
 </template>
@@ -70,7 +62,7 @@ onUnmounted(() => {
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #002b00;
+    background-color: #2b0000;
 }
 .display {
     font-size: 3rem;
