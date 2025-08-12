@@ -25,7 +25,7 @@ function hide() {
         <div :class="{ 'd-none': hidden }" v-for="(exercise, idx) in props.items" :key="idx">
             <Exercise :item="exercise" />
         </div>
-        <button class="control-button" @click="hide">{{hidden ? 'Show' : 'Complete'}}</button>
+        <a href="#" @click.prevent="hide">{{hidden ? 'expand' : 'collapse'}}</a>
     </div>
 </template>
 

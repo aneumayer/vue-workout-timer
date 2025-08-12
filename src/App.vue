@@ -20,6 +20,10 @@ function handleSelection(workout) {
 </template>
 
 <style>
+a[href="#"] {
+  color: white;
+}
+
 .container {
     width: 800px;
     place-items: center;
