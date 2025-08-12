@@ -11,8 +11,16 @@ import WorkoutPicker from '@/components/WorkoutPicker.vue';
     </div>
 </template>
 
-<style scoped>
+<style>
 .container {
+    width: 800px;
     place-items: center;
+}
+.control-button {
+    margin: 0.5em;
+    border-radius: 8px;
+    background-color: #222529;
+    font: white;
+    width: 8rem;
 }
 </style>

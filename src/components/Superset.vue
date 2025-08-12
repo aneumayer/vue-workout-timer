@@ -20,9 +20,11 @@ const props = defineProps({
 
 <style scoped>
 .superset {
+    width: 30rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
+    background-color: #2b0000;
 }
 </style>

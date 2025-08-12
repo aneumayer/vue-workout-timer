@@ -16,8 +16,8 @@ defineProps({
 
 <template>
     <div class="rep-block">
-        <div>
-            <input type="checkbox" v-bind:value="setDone"></input>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" v-bind:value="setDone"></input>
             Set {{ setIndex }}: {{ reps }} Reps
         </div>
     </div>
