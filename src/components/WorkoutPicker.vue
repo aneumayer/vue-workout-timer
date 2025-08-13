@@ -41,7 +41,7 @@ if (selected.value) loadFile(selected.value);
     width: 30rem;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem;
     margin-bottom: 1rem;
     background-color: #2b2b00;
 }

@@ -27,8 +27,8 @@ defineProps({
 .rep-block {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.2rem;
     background-color: #2b1800;
 }
 </style>
