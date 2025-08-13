@@ -1,8 +1,9 @@
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, watch } from 'vue';
 
-let setDone = ref(false);
-defineProps({
+const setDone = ref(false);
+
+const props = defineProps({
     setIndex: {
         type: Number,
         required: true
@@ -11,13 +12,19 @@ defineProps({
         type: Number,
         required: true
     }
-})
+});
+
+const emit = defineEmits(['set-done']);
+
+watch(setDone, (newVal) => {
+    emit('set-done', { setIndex: props.setIndex, done: newVal });
+});
 </script>
 
 <template>
     <div class="rep-block">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" v-bind:value="setDone"></input>
+            <input class="form-check-input" type="checkbox" v-model="setDone" />
             Set {{ setIndex }}: {{ reps }} Reps
         </div>
     </div>

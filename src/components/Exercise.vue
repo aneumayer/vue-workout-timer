@@ -10,9 +10,27 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['exercise-hidden']);
+
+
 const hidden = ref(false);
+const completedSets = ref(new Set());
+
 function hide() {
-    hidden.value = !hidden.value;
+    hidden.value = true;
+    emit('exercise-hidden');
+}
+
+function toggleSetDone({ setIndex, done }) {
+    if (done) {
+        completedSets.value.add(setIndex);
+    } else {
+        completedSets.value.delete(setIndex);
+    }
+
+    if (completedSets.value.size === props.item.sets) {
+        hide();
+    }
 }
 </script>
 
@@ -20,11 +38,13 @@ function hide() {
     <div class="exercise">
         <div :class="{ 'd-none': hidden }">
             <h4>{{ props.item.name }}</h4>
-            <RepSet v-for="setIndex in props.item.sets" :key="setIndex" :setIndex="setIndex" :reps="props.item.reps" />
+            <RepSet v-for="setIndex in props.item.sets" :key="setIndex" :setIndex="setIndex" :reps="props.item.reps"
+                @set-done="toggleSetDone" />
         </div>
-        <a href="#" @click.prevent="hide">{{hidden ? 'show' : 'hide'}}</a>
+        <a href="#" @click.prevent="hidden = !hidden">{{ hidden ? 'show' : 'hide' }}</a>
     </div>
 </template>
+
 
 <style scoped>
 .exercise {

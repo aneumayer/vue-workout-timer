@@ -14,18 +14,28 @@ const props = defineProps({
 });
 
 const hidden = ref(false);
+const hiddenExercises = ref(0);
+
 function hide() {
     hidden.value = !hidden.value;
+}
+
+function onExerciseHidden() {
+  hiddenExercises.value += 1;
+  if (hiddenExercises.value === props.items.length) {
+    hide();
+  }
 }
 </script>
 
 <template>
     <div class="superset">
         <h3>Superset {{ supersetCount }}</h3>
-        <div :class="{ 'd-none': hidden }" v-for="(exercise, idx) in props.items" :key="idx">
-            <Exercise :item="exercise" />
+        <div :class="{ 'd-none': hidden }">
+            <Exercise v-for="(exercise, idx) in props.items" :key="idx" :item="exercise"
+                @exercise-hidden="onExerciseHidden" />
         </div>
-        <a href="#" @click.prevent="hide">{{hidden ? 'show' : 'hide'}}</a>
+        <a href="#" @click.prevent="hide">{{ hidden ? 'show' : 'hide' }}</a>
     </div>
 </template>
 
