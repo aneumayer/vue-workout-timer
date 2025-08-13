@@ -31,4 +31,10 @@ defineProps({
     margin-bottom: 0.2rem;
     background-color: #2b1800;
 }
+
+input[type="checkbox"] {
+    color: #2b1800;
+    border: 1px solid #ccc;
+    background-color: #2b1800;
+}
 </style>

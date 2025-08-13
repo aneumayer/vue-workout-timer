@@ -61,7 +61,7 @@ onUnmounted(() => {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     background-color: #2b0000;
 }
 .display {

@@ -22,7 +22,7 @@ function hide() {
             <h4>{{ props.item.name }}</h4>
             <RepSet v-for="setIndex in props.item.sets" :key="setIndex" :setIndex="setIndex" :reps="props.item.reps" />
         </div>
-        <a href="#" @click.prevent="hide">{{hidden ? 'expand' : 'collapse'}}</a>
+        <a href="#" @click.prevent="hide">{{hidden ? 'show' : 'hide'}}</a>
     </div>
 </template>
 

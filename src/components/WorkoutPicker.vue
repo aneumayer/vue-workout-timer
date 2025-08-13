@@ -42,7 +42,7 @@ if (selected.value) loadFile(selected.value);
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     background-color: #2b2b00;
 }
 

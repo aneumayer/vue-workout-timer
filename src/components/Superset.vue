@@ -25,7 +25,7 @@ function hide() {
         <div :class="{ 'd-none': hidden }" v-for="(exercise, idx) in props.items" :key="idx">
             <Exercise :item="exercise" />
         </div>
-        <a href="#" @click.prevent="hide">{{hidden ? 'expand' : 'collapse'}}</a>
+        <a href="#" @click.prevent="hide">{{hidden ? 'show' : 'hide'}}</a>
     </div>
 </template>
 
@@ -35,7 +35,7 @@ function hide() {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     background-color: #00002b;
 }
 </style>
