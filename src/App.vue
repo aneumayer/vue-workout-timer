@@ -35,5 +35,6 @@ a[href="#"] {
     background-color: #222529;
     font: white;
     width: 8rem;
+    border: 1px solid #ddd;
 }
 </style>
