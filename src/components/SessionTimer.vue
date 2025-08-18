@@ -1,22 +1,30 @@
 <script setup>
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, computed, watch, onUnmounted } from 'vue';
 
 // Set the intervale for the timer
-let elapsed = ref(0);
-let intervalId = null;
+const elapsed = ref(0);
+const intervalId = ref(null);
+const buttonText = computed(() => {
+    return intervalId.value ? 'Stop' : 'Start';
+})
+
+// Set the interval for one second
 const startTimer = () => {
-    if (!intervalId) {
-        intervalId = setInterval(() => { elapsed.value++; }, 1000);
+    if (!intervalId.value) {
+        intervalId.value = setInterval(() => {
+            elapsed.value++; 
+        }, 1000);
     }
 };
 
 // Clear the intervale to pause the timer
 const stopTimer = () => {
-    if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
+    if (intervalId.value) {
+        clearInterval(intervalId.value);
+        intervalId.value = null;
     }
 };
+
 
 // Whenever the elapsed time changes format the sessionTime
 let sessionTime = ref('00:00');
@@ -47,7 +55,7 @@ onUnmounted(() => {
     <div class="timer card center-block">
         <div class="display d-flex justify-content-center">{{ sessionTime }}</div>
         <div class="controls d-flex justify-content-center">
-            <button class="control-button" @click="toggleTimer">{{ running ? 'Stop' : 'Start' }}</button>
+            <button class="control-button p-1" @click="toggleTimer">{{ buttonText }}</button>
         </div>
     </div>
 </template>
