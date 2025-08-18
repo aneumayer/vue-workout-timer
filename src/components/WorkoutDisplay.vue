@@ -24,9 +24,9 @@ const supersetIndices = computed(() => {
 
 <template>
     <div v-if="props.workout">
-        <div v-for="(exerciseBlock, idx) in props.workout" :key="idx">
+        <template v-for="(exerciseBlock, idx) in props.workout" :key="idx">
             <TheSuperset v-if="Array.isArray(exerciseBlock)" :exercises="exerciseBlock" :supersetCount="supersetIndices[idx]" />
             <TheExercise v-else :exercise="exerciseBlock" />
-        </div>
+        </template>
     </div>
 </template>

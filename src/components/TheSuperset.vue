@@ -34,10 +34,10 @@ const onHideButtonClick = () => {
 <template>
     <div class="superset">
         <h3>Superset {{ supersetCount }}</h3>
-        <div v-if="props.exercises" v-show="showStatus">
+        <template v-if="props.exercises" v-show="showStatus">
             <TheExercise v-for="(exercise, idx) in props.exercises" :key="idx" 
                 :exercise="exercise" @exerciseComplete="onHideButtonClick" />
-        </div>
+        </template>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>
     </div>
 </template>
