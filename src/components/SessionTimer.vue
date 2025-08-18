@@ -25,6 +25,11 @@ const stopTimer = () => {
     }
 };
 
+// Reset the app by reloading the page
+const onClickreset = () => {
+    location.reload();
+};
+
 
 // Whenever the elapsed time changes format the sessionTime
 let sessionTime = ref('00:00');
@@ -56,6 +61,7 @@ onUnmounted(() => {
         <div class="display d-flex justify-content-center">{{ sessionTime }}</div>
         <div class="controls d-flex justify-content-center">
             <button class="control-button p-1" @click="toggleTimer">{{ buttonText }}</button>
+            <button class="control-button p-1" @click="onClickreset">Reset</button>
         </div>
     </div>
 </template>
