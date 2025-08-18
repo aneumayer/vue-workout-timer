@@ -1,7 +1,5 @@
 <script setup>
-import { ref, defineProps, watch } from 'vue';
-
-const setDone = ref(false);
+import { ref, watch } from 'vue';
 
 const props = defineProps({
     setIndex: {
@@ -14,15 +12,16 @@ const props = defineProps({
     }
 });
 
+// When the check box is done pass a done event to the parent
+const setDone = ref(false);
 const emit = defineEmits(['set-done']);
-
 watch(setDone, (newVal) => {
     emit('set-done', { setIndex: props.setIndex, done: newVal });
 });
 </script>
 
 <template>
-    <div class="rep-block">
+    <div v-if="props.setIndex" class="rep-block">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" v-model="setDone" />
             Set {{ setIndex }}: {{ reps }} Reps

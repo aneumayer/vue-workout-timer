@@ -4,9 +4,10 @@ import SessionTimer from '@/components/SessionTimer.vue';
 import WorkoutPicker from '@/components/WorkoutPicker.vue';
 import WorkoutDisplay from '@/components/WorkoutDisplay.vue';
 
-const data = ref(null);
+// Get the selected workout to pass down
+const workoutChoice = ref(null);
 function handleSelection(workout) {
-    data.value = workout;
+    workoutChoice.value = workout;
 }
 </script>
 
@@ -15,13 +16,13 @@ function handleSelection(workout) {
         <h1>Workout Timer</h1>
         <WorkoutPicker @selectedWorkout="handleSelection" />
         <SessionTimer />
-        <WorkoutDisplay v-if="data" :workout="data" />
+        <WorkoutDisplay v-if="workoutChoice" :workout="workoutChoice" />
     </div>
 </template>
 
 <style>
 a[href="#"] {
-  color: white;
+    color: white;
 }
 
 .container {

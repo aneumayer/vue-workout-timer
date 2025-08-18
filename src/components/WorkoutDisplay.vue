@@ -1,7 +1,7 @@
 <script setup>
-import { ref, defineProps, computed } from 'vue';
-import Superset from '@/components/Superset.vue';
-import Exercise from '@/components/Exercise.vue';
+import { computed } from 'vue';
+import TheSuperset from '@/components/TheSuperset.vue';
+import TheExercise from '@/components/TheExercise.vue';
 
 const props = defineProps({
     workout: {
@@ -23,13 +23,10 @@ const supersetIndices = computed(() => {
 </script>
 
 <template>
-    <div v-if="!props.workout">
-        Loading workout…
-    </div>
-    <div v-else>
-        <div v-for="(sub, idx) in props.workout" :key="idx">
-            <Superset v-if="Array.isArray(sub)" :items="sub" :supersetCount="supersetIndices[idx]" />
-            <Exercise v-else :item="sub" />
+    <div v-if="props.workout">
+        <div v-for="(exerciseBlock, idx) in props.workout" :key="idx">
+            <TheSuperset v-if="Array.isArray(exerciseBlock)" :exercises="exerciseBlock" :supersetCount="supersetIndices[idx]" />
+            <TheExercise v-else :exercise="exerciseBlock" />
         </div>
     </div>
 </template>

@@ -1,30 +1,16 @@
 <script setup>
-import { ref, onUnmounted } from 'vue';
+import { ref, watch, onUnmounted } from 'vue';
 
-let running = ref(false);
+// Set the intervale for the timer
 let elapsed = ref(0);
-let sessionTime = ref('00:00');
 let intervalId = null;
-
-const formatTime = (secs) => {
-    const m = String(Math.floor(secs / 60)).padStart(2, '0');
-    const s = String(secs % 60).padStart(2, '0');
-    return `${m}:${s}`;
-};
-
-const updateTime = () => {
-    sessionTime.value = formatTime(elapsed.value);
-};
-
 const startTimer = () => {
     if (!intervalId) {
-        intervalId = setInterval(() => {
-            elapsed.value++;
-            updateTime();
-        }, 1000);
+        intervalId = setInterval(() => { elapsed.value++; }, 1000);
     }
 };
 
+// Clear the intervale to pause the timer
 const stopTimer = () => {
     if (intervalId) {
         clearInterval(intervalId);
@@ -32,6 +18,16 @@ const stopTimer = () => {
     }
 };
 
+// Whenever the elapsed time changes format the sessionTime
+let sessionTime = ref('00:00');
+watch(() => elapsed.value, () => {
+    const m = String(Math.floor(elapsed.value / 60)).padStart(2, '0');
+    const s = String(elapsed.value % 60).padStart(2, '0');
+    sessionTime.value = `${m}:${s}`;
+});
+
+// Pause and resume the timer
+let running = ref(false);
 const toggleTimer = () => {
     running.value = !running.value;
     if (running.value) {
@@ -41,6 +37,7 @@ const toggleTimer = () => {
     }
 };
 
+// Clear the timer intervale when no longer needed
 onUnmounted(() => {
     stopTimer();
 });
