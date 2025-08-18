@@ -12,11 +12,15 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['setDone']);
+
 // When the check box is done pass a done event to the parent
 const setDone = ref(false);
-const emit = defineEmits(['set-done']);
 watch(setDone, (newVal) => {
-    emit('set-done', { setIndex: props.setIndex, done: newVal });
+    emit('setDone', { 
+        setIndex: props.setIndex,
+        done: newVal
+    });
 });
 </script>
 

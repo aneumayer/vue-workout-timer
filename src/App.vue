@@ -6,7 +6,7 @@ import WorkoutDisplay from '@/components/WorkoutDisplay.vue';
 
 // Get the selected workout to pass down
 const workoutChoice = ref(null);
-function handleSelection(workout) {
+function onWorkoutSelected(workout) {
     workoutChoice.value = workout;
 }
 </script>
@@ -14,7 +14,7 @@ function handleSelection(workout) {
 <template>
     <div class="container">
         <h1>Workout Timer</h1>
-        <WorkoutPicker @selectedWorkout="handleSelection" />
+        <WorkoutPicker @workoutSelected="onWorkoutSelected" />
         <SessionTimer />
         <WorkoutDisplay v-if="workoutChoice" :workout="workoutChoice" />
     </div>

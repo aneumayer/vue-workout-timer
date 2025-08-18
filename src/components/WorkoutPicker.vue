@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+const emit = defineEmits(['workoutSelected']);
+
 // Glob all JSON files in @/assets/workouts and build a list of filenames and their paths
 const modules = import.meta.glob('@/assets/workouts/*.json', { eager: true });
 const fileEntries = Object.entries(modules).map(([path, data]) => ({
@@ -10,10 +12,9 @@ const fileNames = fileEntries.map(entry => entry.name);
 const selected = ref(fileNames[0] || null);
 
 // Get the contents of the selected file and pass it up to parent
-const emit = defineEmits(['selectedWorkout']);
 const loadFile = (name) => {
     const entry = fileEntries.find(e => e.name === name);
-    emit('selectedWorkout', entry.data.default);
+    emit('workoutSelected', entry.data.default);
 }
 
 // Load the first file in the list
@@ -24,6 +25,7 @@ onMounted(() => {
 
 <template>
     <div class="picker d-flex justify-content-center">
+        <label for="fileSelect">Workout:</label>
         <select id="fileSelect" v-model="selected" @change="loadFile(selected)">
             <option v-for="name in fileNames" :key="name" :value="name">
                 {{ name.replace(/_/g, ' ') }}
@@ -40,13 +42,11 @@ onMounted(() => {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: #2b2b00;
+    vertical-align: middle;
 }
 
-.picker-parts {
-    display: inline-block;
-}
 label {
-    padding-right: 1rem;
+    padding: 0.2rem 0.5rem 0.2rem 0;
 }
 
 select {

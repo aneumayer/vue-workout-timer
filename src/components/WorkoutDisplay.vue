@@ -13,8 +13,8 @@ const props = defineProps({
 // Build an array of superset indices ahead of time:
 const supersetIndices = computed(() => {
     let count = 0;
-    return props.workout.map(sub => {
-        if (Array.isArray(sub)) {
+    return props.workout.map(exerciseBlock => {
+        if (Array.isArray(exerciseBlock)) {
             return ++count;
         }
         return null;

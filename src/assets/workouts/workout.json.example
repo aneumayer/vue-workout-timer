@@ -33,21 +33,9 @@
             "sets": 3
         }
     ],
-    [
-        {
-            "name": "Dip",
-            "reps": 8,
-            "sets": 3
-        },
-        {
-            "name": "Hanging Leg Lift",
-            "reps": 8,
-            "sets": 3
-        },
-        {
-            "name": "Elbow Press",
-            "reps": 8,
-            "sets": 3
-        }
-    ]
+    {
+        "name": "Hanging Leg Lift",
+        "reps": 8,
+        "sets": 3
+    }
 ]

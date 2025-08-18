@@ -32,5 +32,5 @@ npm run build
 
 ```sh
 cd src/assets/workouts
-cp workout.example.json Leg_Day.json
+cp workout.json.example Full_Body.json
 ```

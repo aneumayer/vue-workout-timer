@@ -23,7 +23,7 @@ const toggleHidden = () => {
 
 // Handle sending hidden status to parent
 const hiddenExercises = ref(0);
-const onExerciseHidden = () => {
+const onHideButtonClick = () => {
     hiddenExercises.value += 1;
     if (hiddenExercises.value === props.exercises.length) {
         toggleHidden();
@@ -36,7 +36,7 @@ const onExerciseHidden = () => {
         <h3>Superset {{ supersetCount }}</h3>
         <div v-if="props.exercises" v-show="showStatus">
             <TheExercise v-for="(exercise, idx) in props.exercises" :key="idx" 
-                :exercise="exercise" @exercise-done="onExerciseHidden" />
+                :exercise="exercise" @exerciseComplete="onHideButtonClick" />
         </div>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>
     </div>

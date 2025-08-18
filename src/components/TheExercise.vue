@@ -10,8 +10,9 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['exerciseComplete']);
+
 // Manage the status of the of the hide button
-const emit = defineEmits(['exercise-hidden']);
 const showStatus = ref(true);
 const hideButtonText = ref('hide');
 const toggleHidden = () => {
@@ -21,7 +22,7 @@ const toggleHidden = () => {
 
 // If all the reps are complete pass event to parent
 const completedSets = ref(new Set());
-const toggleSetDone = ({ setIndex, done }) => {
+const onSetDone = ({ setIndex, done }) => {
     // Keep track of the done reps in a set
     if (done) {
         completedSets.value.add(setIndex);
@@ -31,7 +32,7 @@ const toggleSetDone = ({ setIndex, done }) => {
     // If the number of done sets is the number of reps tell parent and hide
     if (completedSets.value.size === props.exercise.sets) {
         toggleHidden();
-         emit('exercise-hidden');
+         emit('exerciseComplete');
     }
 }
 </script>
@@ -41,7 +42,7 @@ const toggleSetDone = ({ setIndex, done }) => {
         <div v-show="showStatus">
             <h4>{{ props.exercise.name }}</h4>
             <RepSet v-for="setIndex in props.exercise.sets" :key="setIndex" :setIndex="setIndex" 
-                :reps="props.exercise.reps" @set-done="toggleSetDone" />
+                :reps="props.exercise.reps" @setDone="onSetDone" />
         </div>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>
     </div>
