@@ -12,13 +12,12 @@ const props = defineProps({
 
 // Build an array of superset indices ahead of time:
 const supersetIndices = computed(() => {
-    let count = 0;
-    return props.workout.map(exerciseBlock => {
-        if (Array.isArray(exerciseBlock)) {
-            return ++count;
+    return props.workout.reduce((indexes, exerciseBlock, index) => {
+        if (Array.isArray(exerciseBlock)) { // Superesets are arrays
+            indexes.push(index + 1); // Add with index offest
         }
-        return null;
-    });
+        return indexes;
+    }, []); // Initial value of Array(indexes)
 });
 </script>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onUnmounted } from 'vue';
+import { ref, computed, onUnmounted } from 'vue';
 
 // Set the intervale for the timer
 const elapsed = ref(0);
@@ -12,7 +12,7 @@ const buttonText = computed(() => {
 const startTimer = () => {
     if (!intervalId.value) {
         intervalId.value = setInterval(() => {
-            elapsed.value++; 
+            elapsed.value += 1; 
         }, 1000);
     }
 };
@@ -32,11 +32,10 @@ const onClickreset = () => {
 
 
 // Whenever the elapsed time changes format the sessionTime
-let sessionTime = ref('00:00');
-watch(() => elapsed.value, () => {
+const sessionTime = computed(() => {
     const m = String(Math.floor(elapsed.value / 60)).padStart(2, '0');
     const s = String(elapsed.value % 60).padStart(2, '0');
-    sessionTime.value = `${m}:${s}`;
+    return `${m}:${s}`;
 });
 
 // Pause and resume the timer
