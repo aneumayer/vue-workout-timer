@@ -6,16 +6,20 @@ const workoutStore = useWorkoutStore();
 
 onMounted(() => {
     if (workoutStore.selectedWorkoutName) {
-        workoutStore.selectWorkout(workoutStore.selectedWorkoutName);
+        setWorkout();
     }
 });
+
+const setWorkout = () => {
+    workoutStore.selectWorkout(workoutStore.selectedWorkoutName);
+};
 </script>
 
 <template>
     <div class="picker d-flex justify-content-center">
         <label for="fileSelect">Workout:</label>
         <select id="fileSelect" v-model="workoutStore.selectedWorkoutName"
-            @change="workoutStore.selectWorkout(workoutStore.selectedWorkoutName)">
+            @change="setWorkout">
             <option v-for="name in workoutStore.workoutNames" :key="name" :value="name">
                 {{ name.replace(/_/g, ' ') }}
             </option>

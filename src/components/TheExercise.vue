@@ -41,8 +41,8 @@ const onSetDone = ({ setIndex, done }) => {
     <div v-if="props.exercise" class="exercise">
         <div v-show="showStatus">
             <h4>{{ props.exercise.name }}</h4>
-            <RepSet v-for="setIndex in props.exercise.sets" :key="setIndex" :setIndex="setIndex" 
-                :reps="props.exercise.reps" @setDone="onSetDone" />
+            <RepSet v-for="setIndex in props.exercise.sets" :key="setIndex" :set-index="setIndex" 
+                :reps="props.exercise.reps" @set-done="onSetDone" />
         </div>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>
     </div>
