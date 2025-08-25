@@ -45,10 +45,7 @@ const onHideButtonClick = () => {
 <style>
 .superset {
     width: 30rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    
     background-color: #00002b;
 }
 </style>

@@ -30,10 +30,7 @@ const setWorkout = () => {
 <style scoped>
 .picker {
     width: 30rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    
     background-color: #2b2b00;
     vertical-align: middle;
 }

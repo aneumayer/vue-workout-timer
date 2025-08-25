@@ -18,18 +18,14 @@ import WorkoutDisplay from '@/components/WorkoutDisplay.vue';
 a[href="#"] {
     color: white;
 }
-
 .container {
     width: 800px;
     place-items: center;
 }
-
-.control-button {
-    margin: 0.5em;
-    border-radius: 8px;
-    background-color: #222529;
-    font: white;
-    width: 8rem;
+.picker, .timer, .superset, .exercise {
     border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.6rem;
 }
 </style>

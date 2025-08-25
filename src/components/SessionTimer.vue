@@ -65,16 +65,21 @@ onUnmounted(() => {
     </div>
 </template>
 
-<style scoped>
+<style>
 .timer {
     width: 30rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    
     background-color: #2b0000;
 }
 .display {
     font-size: 3rem;
+}
+.control-button {
+    margin: 0.5em;
+    border-radius: 8px;
+    background-color: #222529;
+    font: white;
+    width: 8rem;
+    border: 1px solid #ddd;
 }
 </style>

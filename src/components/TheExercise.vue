@@ -51,10 +51,6 @@ const onSetDone = ({ setIndex, done }) => {
 
 <style>
 .exercise {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
     background-color: #002b00;
 }
 </style>
