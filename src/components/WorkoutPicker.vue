@@ -18,8 +18,7 @@ const setWorkout = () => {
 <template>
     <div class="picker d-flex justify-content-center">
         <label for="fileSelect">Workout:</label>
-        <select id="fileSelect" v-model="workoutStore.selectedWorkoutName"
-            @change="setWorkout">
+        <select id="fileSelect" v-model="workoutStore.selectedWorkoutName" @change="setWorkout">
             <option v-for="name in workoutStore.workoutNames" :key="name" :value="name">
                 {{ name.replace(/_/g, ' ') }}
             </option>
@@ -30,7 +29,6 @@ const setWorkout = () => {
 <style scoped>
 .picker {
     width: 30rem;
-    
     background-color: #2b2b00;
     vertical-align: middle;
 }

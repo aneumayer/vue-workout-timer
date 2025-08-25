@@ -18,7 +18,7 @@ const showStatus = ref(true);
 const hideButtonText = ref('hide');
 const toggleHidden = () => {
     showStatus.value = !showStatus.value;
-    hideButtonText.value = showStatus ? 'hide': 'show';
+    hideButtonText.value = showStatus ? 'hide' : 'show';
 }
 
 // Handle sending hidden status to parent
@@ -35,8 +35,8 @@ const onHideButtonClick = () => {
     <div class="superset">
         <h3>Superset {{ supersetCount }}</h3>
         <template v-if="props.exercises" v-show="showStatus">
-            <TheExercise v-for="(exercise, idx) in props.exercises" :key="idx" 
-                :exercise="exercise" @exercise-complete="onHideButtonClick" />
+            <TheExercise v-for="(exercise, idx) in props.exercises" :key="idx" :exercise="exercise"
+                @exercise-complete="onHideButtonClick" />
         </template>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>
     </div>
@@ -45,7 +45,6 @@ const onHideButtonClick = () => {
 <style>
 .superset {
     width: 30rem;
-    
     background-color: #00002b;
 }
 </style>

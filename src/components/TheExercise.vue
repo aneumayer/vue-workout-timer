@@ -17,7 +17,7 @@ const showStatus = ref(true);
 const hideButtonText = ref('hide');
 const toggleHidden = () => {
     showStatus.value = !showStatus.value;
-    hideButtonText.value = showStatus ? 'hide': 'show';
+    hideButtonText.value = showStatus ? 'hide' : 'show';
 }
 
 // If all the reps are complete pass event to parent
@@ -32,7 +32,7 @@ const onSetDone = ({ setIndex, done }) => {
     // If the number of done sets is the number of reps tell parent and hide
     if (completedSets.value.size === props.exercise.sets) {
         toggleHidden();
-         emit('exerciseComplete');
+        emit('exerciseComplete');
     }
 }
 </script>
@@ -41,7 +41,7 @@ const onSetDone = ({ setIndex, done }) => {
     <div v-if="props.exercise" class="exercise">
         <div v-show="showStatus">
             <h4>{{ props.exercise.name }}</h4>
-            <RepSet v-for="setIndex in props.exercise.sets" :key="setIndex" :set-index="setIndex" 
+            <RepSet v-for="setIndex in props.exercise.sets" :key="setIndex" :set-index="setIndex"
                 :reps="props.exercise.reps" @set-done="onSetDone" />
         </div>
         <a href="#" @click.prevent="toggleHidden">{{ hideButtonText }}</a>

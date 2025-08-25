@@ -12,7 +12,7 @@ const buttonText = computed(() => {
 const startTimer = () => {
     if (!intervalId.value) {
         intervalId.value = setInterval(() => {
-            elapsed.value += 1; 
+            elapsed.value += 1;
         }, 1000);
     }
 };
@@ -68,12 +68,13 @@ onUnmounted(() => {
 <style>
 .timer {
     width: 30rem;
-    
     background-color: #2b0000;
 }
+
 .display {
     font-size: 3rem;
 }
+
 .control-button {
     margin: 0.5em;
     border-radius: 8px;
