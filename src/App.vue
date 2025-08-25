@@ -3,20 +3,14 @@ import { ref } from 'vue';
 import SessionTimer from '@/components/SessionTimer.vue';
 import WorkoutPicker from '@/components/WorkoutPicker.vue';
 import WorkoutDisplay from '@/components/WorkoutDisplay.vue';
-
-// Get the selected workout to pass down
-const workoutChoice = ref(null);
-function onWorkoutSelected(workout) {
-    workoutChoice.value = workout;
-}
 </script>
 
 <template>
     <div class="container">
         <h1>Workout Timer</h1>
-        <WorkoutPicker @workoutSelected="onWorkoutSelected" />
+        <WorkoutPicker />
         <SessionTimer />
-        <WorkoutDisplay v-if="workoutChoice" :workout="workoutChoice" />
+        <WorkoutDisplay />
     </div>
 </template>
 

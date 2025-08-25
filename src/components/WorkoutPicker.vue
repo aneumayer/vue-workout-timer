@@ -1,33 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useWorkoutStore } from '@/stores/workout';
 
-const emit = defineEmits(['workoutSelected']);
+const workoutStore = useWorkoutStore();
 
-// Glob all JSON files in @/assets/workouts and build a list of filenames and their paths
-const modules = import.meta.glob('@/assets/workouts/*.json', { eager: true });
-const fileEntries = Object.entries(modules).map(([path, data]) => ({
-    name: path.replace(/^.*\/([^.]+)\.json$/, '$1'), path, data
-}));
-const fileNames = fileEntries.map(entry => entry.name);
-const selected = ref(fileNames[0] || null);
-
-// Get the contents of the selected file and pass it up to parent
-const loadFile = (name) => {
-    const entry = fileEntries.find(e => e.name === name);
-    emit('workoutSelected', entry.data.default);
-}
-
-// Load the first file in the list
 onMounted(() => {
-    if (selected.value) loadFile(selected.value);
+    if (workoutStore.selectedWorkoutName) {
+        workoutStore.selectWorkout(workoutStore.selectedWorkoutName);
+    }
 });
 </script>
 
 <template>
     <div class="picker d-flex justify-content-center">
         <label for="fileSelect">Workout:</label>
-        <select id="fileSelect" v-model="selected" @change="loadFile(selected)">
-            <option v-for="name in fileNames" :key="name" :value="name">
+        <select id="fileSelect" v-model="workoutStore.selectedWorkoutName"
+            @change="workoutStore.selectWorkout(workoutStore.selectedWorkoutName)">
+            <option v-for="name in workoutStore.workoutNames" :key="name" :value="name">
                 {{ name.replace(/_/g, ' ') }}
             </option>
         </select>
